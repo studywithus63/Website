@@ -48,16 +48,16 @@ This project is a personal blog and online portfolio for a student, designed to 
 
 - **Firebase App Hosting**: The website is deployed and hosted on Firebase App Hosting, a solution designed for modern, server-rendered web applications. This provides a fast, secure, and scalable environment for the site. The live site can be accessed at [https://studywithus-website-c2872.web.app](https://studywithus-website-c2872.web.app).
 
-## Current Task: Build Failure Resolution
+## Current Task: HTTP 500 Error Resolution
 
-I have resolved a critical build failure that was preventing the application from deploying.
+I have resolved a critical HTTP 500 error that was occurring on the deployed website.
 
 ### Problem
 
-The application build was failing with an error indicating that it could not resolve an import path: `Could not resolve ../../../../firebase/server`. This was happening in the `src/pages/api/auth/login.astro` file.
+After a successful deployment, the website was returning an "HTTP ERROR 500," indicating a server-side error. This was happening because the application could not access the Firebase service account credentials in the production environment.
 
 ### Solution
 
-I investigated the file and found that the relative import path for the firebase server configuration was incorrect. I corrected the path from `../../../../firebase/server` to `../../../firebase/server`. After this change, I ran the build process again, and it completed successfully.
+I have updated the `src/firebase/server.ts` file to conditionally load the Firebase service account credentials. The updated code now checks if the application is running in the production environment (`import.meta.env.PROD`) and loads the credentials accordingly. This ensures that the application can connect to Firebase in both development and production, resolving the 500 error.
 
-I have updated the `blueprint.md` file to reflect this fix. The application is now in a stable, buildable state.
+I have updated the `blueprint.md` file to reflect this fix. The application is now in a stable, deployable state.
