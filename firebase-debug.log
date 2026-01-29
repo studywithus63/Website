@@ -998,3 +998,189 @@
 [error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
 [debug] [2026-01-29T07:04:33.801Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
 [debug] [2026-01-29T07:04:33.801Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:05.616Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:05.620Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:05.624Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:05.624Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:05.625Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:05.625Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:05.626Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:05.626Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:05.629Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:13:05.684Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:13:06.052Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:13:06.053Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[debug] [2026-01-29T07:13:06.078Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.078Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.079Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.079Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.100Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.101Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.101Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-29T07:13:06.101Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:06.106Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-29T07:13:06.106Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:06.109Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [none]
+[debug] [2026-01-29T07:13:06.109Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:06.151Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:13:06.152Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[debug] [2026-01-29T07:13:06.154Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.154Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.158Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.161Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.173Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.174Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:06.174Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-29T07:13:06.174Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:06.177Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-29T07:13:06.178Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:06.181Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [none]
+[debug] [2026-01-29T07:13:06.181Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:13:07.197Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com 403
+[debug] [2026-01-29T07:13:07.200Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [omitted]
+[debug] [2026-01-29T07:13:07.223Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-29T07:13:07.224Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-29T07:13:07.259Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-29T07:13:07.260Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.273Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.273Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:07.273Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.273Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.273Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:13:07.309Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-29T07:13:07.309Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-29T07:13:07.341Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com 403
+[debug] [2026-01-29T07:13:07.344Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [omitted]
+[debug] [2026-01-29T07:13:07.368Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-29T07:13:07.369Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-01-29T07:13:07.507Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:13:07.507Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.530Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.535Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.588Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:07.593Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.593Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.593Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.611Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.612Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:07.612Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.612Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:13:07.612Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:13:07.797Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:13:07.797Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.799Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.806Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:13:07.838Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:13:07.839Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:13:07.851Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:13:07.851Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:27.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:27.728Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:27.733Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:27.733Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:27.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:27.735Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:27.735Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:27.737Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:27.739Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:16:27.794Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:16:28.069Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:16:28.069Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[debug] [2026-01-29T07:16:28.086Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.087Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.088Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.088Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.121Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.121Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.122Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-29T07:16:28.122Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.126Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-29T07:16:28.126Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.129Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [none]
+[debug] [2026-01-29T07:16:28.129Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.134Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:16:28.135Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[debug] [2026-01-29T07:16:28.136Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.136Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.137Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.137Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.148Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.148Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:28.149Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [none]
+[debug] [2026-01-29T07:16:28.149Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.152Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [none]
+[debug] [2026-01-29T07:16:28.152Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.155Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [none]
+[debug] [2026-01-29T07:16:28.155Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com x-goog-quota-user=projects/studywithus-website-c2872
+[debug] [2026-01-29T07:16:28.536Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-29T07:16:28.542Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2026-01-29T07:16:29.292Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com 403
+[debug] [2026-01-29T07:16:29.293Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [omitted]
+[debug] [2026-01-29T07:16:29.323Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-29T07:16:29.323Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-29T07:16:29.327Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com 200
+[debug] [2026-01-29T07:16:29.328Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2026-01-29T07:16:29.328Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com 403
+[debug] [2026-01-29T07:16:29.328Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/firebaseio.com [omitted]
+[debug] [2026-01-29T07:16:29.333Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com 200
+[debug] [2026-01-29T07:16:29.333Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/studywithus-website-c2872/services/cloudfunctions.googleapis.com [omitted]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.342Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.342Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:29.345Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.345Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.345Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:16:29.556Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:16:29.556Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.564Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.606Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.606Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:29.607Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.607Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.607Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.622Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.622Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:29.623Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.623Z] Checked if tokens are valid: true, expires at: 1769673498087
+[debug] [2026-01-29T07:16:29.624Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-01-29T07:16:29.812Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:16:29.812Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.825Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.825Z] > authorizing via signed-in user (studywithusmans@gmail.com)
+[debug] [2026-01-29T07:16:29.853Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 200
+[debug] [2026-01-29T07:16:29.853Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"name":"projects/studywithus-website-c2872/billingInfo","projectId":"studywithus-website-c2872","billingAccountName":"billingAccounts/01426D-BAD8BA-ED07F7","billingEnabled":true}
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-01-29T07:16:29.866Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-01-29T07:16:29.866Z] > authorizing via signed-in user (studywithusmans@gmail.com)
