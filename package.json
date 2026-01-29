@@ -16,7 +16,8 @@
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.4",
-    "firebase": "^10.12.2",
+    "firebase": "^10.14.1",
+    "firebase-admin": "^13.6.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.18"
   }

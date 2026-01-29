@@ -1,71 +1,84 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-
-// Redirect if already logged in
-if (Astro.cookies.has('session')) {
-    const sessionCookie = Astro.cookies.get('session');
-    if (sessionCookie && sessionCookie.value === import.meta.env.SESSION_SECRET) {
-        return Astro.redirect("/admin");
-    }
-}
-
-let error = '';
-if (Astro.request.method === "POST") {
-    try {
-        const data = await Astro.request.formData();
-        const email = data.get("email");
-        const password = data.get("password");
-
-        if (email === import.meta.env.ADMIN_EMAIL && password === import.meta.env.ADMIN_PASSWORD) {
-            Astro.cookies.set("session", import.meta.env.SESSION_SECRET, {
-                path: "/",
-                httpOnly: true,
-                secure: import.meta.env.PROD, // Only send cookie over HTTPS in production
-                sameSite: "strict",
-                maxAge: 60 * 60 * 24 * 7 // 1 week
-            });
-            return Astro.redirect("/admin");
-        } else {
-            error = "Invalid email or password. Please try again.";
-        }
-    } catch (e) {
-        console.error('Login error:', e);
-        error = "An unexpected error occurred. Please try again later.";
-    }
-}
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Admin Login">
-    <main class="bg-gray-50 dark:bg-gray-900 flex items-center justify-center min-h-screen">
-        <section class="py-8 px-4 w-full max-w-md">
-            <div class="bg-white rounded-2xl shadow-xl dark:bg-gray-800 p-8">
-                <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Admin Portal</h2>
-                    <p class="text-gray-500 dark:text-gray-400 mt-2">Please login to continue</p>
-                </div>
-                
-                {error && 
-                    <div class="p-4 mb-5 text-sm text-red-800 rounded-lg bg-red-100 dark:bg-gray-700 dark:text-red-300 text-center font-medium" role="alert">
-                        {error}
-                    </div>
-                }
-
-                <form method="POST" class="space-y-6">
-                    <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="name@company.com" required>
-                    </div>
-                    <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Password</label>
-                        <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500" placeholder="••••••••" required>
-                    </div>
-                    
-                    <button type="submit" class="w-full text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 transition duration-150 ease-in-out shadow-md">Login</button>
-                </form>
-            </div>
-             <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
-                Go back to <a href="/" class="font-medium text-indigo-600 hover:underline dark:text-indigo-500">Home Page</a>
-            </p>
-        </section>
-    </main>
+  <div class="login-container">
+    <div class="login-card">
+      <h1>Admin Login</h1>
+      <form method="POST" action="/api/auth/login">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="login-button">Login</button>
+      </form>
+    </div>
+  </div>
 </BaseLayout>
+
+<style>
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f7fafc;
+  }
+  .login-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+  }
+  input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 1px #4299e1;
+  }
+  .login-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .login-button:hover {
+    background-color: #3182ce;
+  }
+</style>
