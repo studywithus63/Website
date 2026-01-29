@@ -1,3 +1,4 @@
+
 # Blueprint
 
 ## Overview
@@ -18,20 +19,22 @@ This project is a personal blog and online portfolio for a student, designed to 
 - **Home Page**: The home page features a hero section with a brief introduction to the student, a summary of their skills, and a call to action to learn more about them.
 - **About Page**: The about page provides a more detailed overview of the student's background, skills, and experience.
 - **Admin Page**: The admin page provides a central hub for managing the blog, allowing the student to create, edit, and delete posts.
+- **Admin New Post Page**: A new page at `/admin/new` that provides a form to create new blog posts.
 - **Blog Post Pages**: Each blog post has its own dedicated page, which is dynamically generated from the markdown files in the `src/content/blog` directory.
 
 ### Blog
 
-- **Blog Post Creation**: The student can create new blog posts using a simple form on the admin page.
+- **Blog Post Creation**: The student can create new blog posts using a simple form on the `/admin/new` page.
 - **Blog Post Editing**: The student can edit existing blog posts using a similar form on the admin page.
 - **Blog Post Deletion**: The student can delete blog posts from the admin page.
 - **SEO-Friendly Slugs**: The blog posts have SEO-friendly slugs that are generated from the post title.
 
 ### API
 
-- **`create-post`**: This API endpoint handles the creation of new blog posts.
+- **`/api/posts`**: This API endpoint handles the creation of new blog posts by accepting form data and creating a new markdown file in the `src/content/blog` directory.
 - **`edit-post`**: This API endpoint handles the editing of existing blog posts.
 - **`delete-post`**: This API endpoint handles the deletion of blog posts.
+- **`/api/auth/login.astro`**: This API endpoint handles user login and session management.
 
 ### Security
 
@@ -45,7 +48,12 @@ This project is a personal blog and online portfolio for a student, designed to 
 
 - **Firebase App Hosting**: The website is deployed and hosted on Firebase App Hosting, a solution designed for modern, server-rendered web applications. This provides a fast, secure, and scalable environment for the site. The live site can be accessed at [https://studywithus-website-c2872.web.app](https://studywithus-website-c2872.web.app).
 
-## Current Task: Deployment to Firebase
+## Current Task: New Post Creation and Login Fix
 
-I have successfully deployed the application to Firebase App Hosting. The website is now live and accessible. I have also updated the `blueprint.md` file to reflect all the changes made during this process, including the security enhancements and the deployment method.
+I have successfully implemented the feature to create new blog posts and fixed the login API. The changes include:
+- A new page at `/admin/new` for creating posts.
+- A new API endpoint at `/api/posts` to handle post creation.
+- A new login API at `/api/auth/login.astro` to fix the "500 error".
+
+I have updated the `blueprint.md` file to reflect all these changes. The application has been deployed with these updates.
 
