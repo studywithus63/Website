@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/client",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,5 +12,11 @@
     "location": "nam5",
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+  },
+  "apphosting": {
+    "backend": "studywithuswebsite",
+    "region": "asia-southeast1",
+    "source": ".",
+    "node": "20"
   }
 }
