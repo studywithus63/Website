@@ -1,35 +1,35 @@
-# Blueprint
+This is a blueprint for a web application built with Astro.js and Firebase. The application is designed to be a content-focused website with a server-first approach, leveraging Astro's Islands Architecture for optimal performance.
 
-## Overview
+## Project Overview
 
-This document outlines the plan to add a site-wide newsletter signup box to the Astro project.
+*   **Framework:** Astro.js
+*   **Deployment:** Firebase App Hosting
+*   **Authentication:** Firebase Authentication
+*   **Database:** Cloud Firestore
 
-## Current Implementation Plan
+## Implemented Features
 
-### 1. Create the Newsletter Component
+*   **Admin Panel:** A secure admin panel for managing site content.
+    *   **Login:** An email/password-based login system for administrators.
+    *   **Session Management:** Secure session management using HTTP-only cookies.
+*   **Firebase Integration:**
+    *   **Client-Side:** The Firebase client SDK is initialized and used for front-end interactions.
+    *   **Server-Side:** The Firebase Admin SDK is initialized for backend operations.
 
-- A new Astro component will be created at `src/components/Newsletter.astro`.
-- This component will contain the HTML and CSS for the newsletter signup form, including fields for name, email, a consent checkbox, and a submit button.
-- The styling will be self-contained within the component.
+## Design and Styling
 
-### 2. Create the API Endpoint
+*   **Layout:** A base layout (`BaseLayout.astro`) provides a consistent structure for all pages.
+*   **Styling:** The application uses a clean and modern design with a focus on user experience.
 
-- A new API endpoint will be created at `src/pages/api/subscribe.js` to handle form submissions.
-- This endpoint will perform server-side validation and process the form data.
-- Initially, it will log submissions to the console.
+## Current Plan
 
-### 3. Integrate the Component
+The current plan is to finalize the Firebase authentication flow and resolve any deployment issues.
 
-- The `Newsletter` component will be added to the `src/layouts/BaseLayout.astro` file.
-- It will be placed immediately before the `Footer` component.
-- Conditional logic will be used to prevent the newsletter box from appearing on admin pages.
+### Steps:
 
-## Current Task: Debugging Admin Login HTTP 500 Error
-
-**Issue:** An `HTTP ERROR 500` is occurring when attempting to log in to the admin section via `/admin/login`. Firebase logs indicate a `SyntaxError: "undefined" is not valid JSON` originating from or related to the `/api/auth/login` POST request. This is unexpected as the `src/pages/api/auth/login.astro` endpoint uses `request.formData()` which typically handles form-encoded data, not JSON parsing directly. The login form (`src/pages/admin/login.astro`) correctly uses `method="POST"` and `action="/api/auth/login"`.
-
-**Proposed Debugging Steps:**
-
-1.  Add debug logs within `src/pages/api/auth/login.astro` to inspect the incoming `request` object and its body.
-2.  Specifically, before calling `request.formData()`, attempt to log `request.headers.get('content-type')` and potentially `request.text()` (though `request.formData()` and `request.text()` can conflict if called on the same request body, this is for diagnostic purposes).
-3.  Log the raw `formData` object and the extracted `email` and `password` values to ensure they are being received as expected.
+1.  **Create `.env` file:** Create a `.env` file to store Firebase project credentials.
+2.  **Create `src/firebase/client.ts`:** Create a file to initialize the Firebase client SDK.
+3.  **Update `src/pages/admin/login.astro`:** Update the admin login page to use the shared Firebase client instance.
+4.  **Create `src/pages/api/auth/login.ts`:** Create a server-side API endpoint to handle login requests.
+5.  **Create `firebase/server.ts`:** Create a file to initialize the Firebase Admin SDK on the server.
+6.  **Commit and Push:** Commit all changes to the GitHub repository.
