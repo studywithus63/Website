@@ -1,3 +1,4 @@
+
 {
   "hosting": {
     "public": "dist/client",
@@ -19,12 +20,14 @@
     "source": ".",
     "node": "20",
     "env": {
-      "public_firebase_api_key": "AIzaSyAMX7RKnck6YQC8sCsY1GFLhWpe0XNUjf8",
-      "public_firebase_auth_domain": "studywithus-website-96b3a.firebaseapp.com",
-      "public_firebase_project_id": "studywithus-website-96b3a",
-      "public_firebase_storage_bucket": "studywithus-website-96b3a.firebasestorage.app",
-      "public_fb_messaging_id": "848006910795",
-      "public_firebase_app_id": "1:848006910795:web:ccb629a9c5d6afabbecece"
+      "PUBLIC_FIREBASE_API_KEY": "AIzaSyAMX7RKnck6YQC8sCsY1GFLhWpe0XNUjf8",
+      "PUBLIC_FIREBASE_AUTH_DOMAIN": "studywithus-website-96b3a.firebaseapp.com",
+      "PUBLIC_FIREBASE_DATABASE_URL": "https://studywithus-website-96b3a-default-rtdb.asia-southeast1.firebasedatabase.app",
+      "PUBLIC_FIREBASE_PROJECT_ID": "studywithus-website-96b3a",
+      "PUBLIC_FIREBASE_STORAGE_BUCKET": "studywithus-website-96b3a.firebasestorage.app",
+      "PUBLIC_FB_MESSAGING_ID": "848006910795",
+      "PUBLIC_FIREBASE_APP_ID": "1:848006910795:web:ccb629a9c5d6afabbecece",
+      "PUBLIC_FIREBASE_MEASUREMENT_ID": "G-EY39NRXLS5"
     }
   }
 }
