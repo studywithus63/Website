@@ -2,17 +2,18 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
-	return posts.map((post) => ({
+	const filteredPosts = posts.filter(post => post.data.slug); // Filter posts with a slug
+	return filteredPosts.map((post) => ({
 		params: { slug: post.data.slug },
-		props: { slug: post.data.slug },
+		props: { post },
 	}));
 }
 
-const { slug } = Astro.props;
-const posts = await getCollection('blog');
-const post = posts.find(p => p.data.slug === slug);
+const { post } = Astro.props;
 
 if (!post) {
     return new Response(null, { status: 404 });

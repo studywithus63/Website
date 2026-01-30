@@ -5,10 +5,11 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.string().transform((str) => new Date(str)),
-    heroImage: z.string(),
-    imageAlt: z.string().optional(), // Added optional imageAlt
-    author: z.string().default('Admin'), // Added author with a default value
+    heroImage: z.array(z.string()), // Changed to accept multiple images
+    imageAlt: z.string().optional(),
+    author: z.string().default('Admin'),
     slug: z.string(),
+    tableOfContents: z.string(), // Changed from tagline to tableOfContents
   }),
 });
 

@@ -1,37 +1,31 @@
 
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
-
-// Helper function to create a slug from a title
-function createSlug(title: string): string {
-    return title
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '-');
-}
 
 export const POST: APIRoute = async ({ request, redirect }) => {
     const formData = await request.formData();
     const title = formData.get("title")?.toString();
+    const slug = formData.get("slug")?.toString();
     const description = formData.get("description")?.toString();
+    const tableOfContents = formData.get("tableOfContents")?.toString();
     const author = formData.get("author")?.toString();
     const pubDate = formData.get("pubDate")?.toString();
     const heroImage = formData.get("heroImage")?.toString();
     const content = formData.get("content")?.toString();
 
-    if (!title || !description || !author || !pubDate || !content) {
+    if (!title || !slug || !description || !author || !pubDate || !content) {
         return new Response("Missing required fields", { status: 400 });
     }
 
-    const slug = createSlug(title);
+    const heroImages = heroImage ? heroImage.split('\n').filter(url => url.trim() !== '') : [];
 
     const markdownContent = `---   
 title: "${title}"
+slug: "${slug}"
 description: "${description}"
 pubDate: ${pubDate}
 author: "${author}"
-${heroImage ? `heroImage: "${heroImage}"` : ''}
+${heroImages.length > 0 ? `heroImage:\n${heroImages.map(img => `  - "${img}"`).join('\n')}` : ''}
+tableOfContents: "${tableOfContents}"
 ---
 
 ${content}`;

@@ -11,7 +11,8 @@ if (!post) {
   return new Response(null, { status: 404 });
 }
 
-const isScheduled = post.data.status === 'scheduled';
+// Ensure heroImage is an array
+const heroImages = Array.isArray(post.data.heroImage) ? post.data.heroImage : [post.data.heroImage];
 ---
 
 <BaseLayout title={`Edit: ${post.data.title}`}>
@@ -25,6 +26,10 @@ const isScheduled = post.data.status === 'scheduled';
             <input type="text" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.title} required>
           </div>
           <div class="sm:col-span-2">
+            <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
+            <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.slug} required>
+          </div>
+          <div class="sm:col-span-2">
             <label for="author" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Author Name</label>
             <input type="text" name="author" id="author" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.author} required>
           </div>
@@ -33,36 +38,24 @@ const isScheduled = post.data.status === 'scheduled';
             <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{post.data.description}</textarea>
           </div>
           <div class="sm:col-span-2">
-            <label for="heroImage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hero Image URL</label>
-            <input type="text" name="heroImage" id="heroImage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.heroImage}>
+            <label for="tableOfContents" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Table of Contents</label>
+            <textarea id="tableOfContents" name="tableOfContents" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{post.data.tableOfContents || ''}</textarea>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="heroImage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hero Image URLs (one per line)</label>
+            <textarea name="heroImage" id="heroImage" rows="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{heroImages.join('\n')}</textarea>
           </div>
            <div class="sm:col-span-2">
-            <label for="heroImageAlt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hero Image Alt Text</label>
-            <input type="text" name="heroImageAlt" id="heroImageAlt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.heroImageAlt} required>
+            <label for="imageAlt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hero Image Alt Text</label>
+            <input type="text" name="imageAlt" id="imageAlt" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.imageAlt} required>
         </div>
           <div class="sm:col-span-2">
             <div class="flex justify-between items-center mb-2">
               <label for="content" class="text-sm font-medium text-gray-900 dark:text-white">Main Content (Markdown supported)</label>
-              <div>
-                <button type="button" id="add-faq-btn" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500 mr-4">Add FAQ</button>
-                <button type="button" id="generate-toc-btn" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Generate TOC</button>
-              </div>
             </div>
             <textarea id="content" name="content" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">{post.body}</textarea>
           </div>
 
-          <div class="sm:col-span-2">
-            <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-            <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-              <option value="published" selected={post.data.status === 'published'}>Published</option>
-              <option value="draft" selected={post.data.status === 'draft'}>Draft</option>
-              <option value="scheduled" selected={isScheduled}>Scheduled</option>
-            </select>
-          </div>
-          <div id="schedule-container" class:list={["sm:col-span-2", { hidden: !isScheduled }]}>
-            <label for="pubDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Publish Date</label>
-            <input type="datetime-local" name="pubDate" id="pubDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={post.data.pubDate ? new Date(post.data.pubDate).toISOString().slice(0, 16) : ''}>
-          </div>
         </div>
 
         <div id="form-message" class="mt-4 text-center font-medium"></div>
@@ -84,52 +77,6 @@ const isScheduled = post.data.status === 'scheduled';
   const form = document.getElementById('edit-post-form');
   const messageDiv = document.getElementById('form-message');
   const submitButton = document.getElementById('submit-btn');
-  const statusSelect = document.getElementById('status');
-  const scheduleContainer = document.getElementById('schedule-container');
-  const addFaqBtn = document.getElementById('add-faq-btn');
-  const generateTocBtn = document.getElementById('generate-toc-btn');
-  const contentArea = document.getElementById('content');
-
-  statusSelect.addEventListener('change', () => {
-    scheduleContainer.classList.toggle('hidden', statusSelect.value !== 'scheduled');
-  });
-
-  addFaqBtn.addEventListener('click', () => {
-    const faqTemplate = `
-**Q: Enter your question here?**
-**Ans:** Enter your answer here.
-`;
-    contentArea.value += faqTemplate;
-  });
-
-  generateTocBtn.addEventListener('click', () => {
-    const content = contentArea.value;
-    const tocHeader = '## Table of Contents\n';
-    const headings = content.match(/^#{2,3}\s.*$/gm) || [];
-    
-    if (headings.length === 0) {
-        alert('No headings (## or ###) found to generate a Table of Contents.');
-        return;
-    }
-
-    const tocList = headings.map(heading => {
-        const level = heading.startsWith('###') ? 2 : 1;
-        const text = heading.replace(/^#{2,3}\s/, '').trim();
-        const slug = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
-        return `${'  '.repeat(level - 1)}- [${text}](#${slug})`;
-    }).join('\n');
-
-    const tocMarkdown = `${tocHeader}${tocList}\n\n`;
-
-    if (content.includes(tocHeader)) {
-        // Replace existing TOC
-        contentArea.value = content.replace(/^## Table of Contents\n[\s\S]*?\n\n/, tocMarkdown);
-    } else {
-        // Add new TOC to the top
-        contentArea.value = tocMarkdown + content;
-    }
-  });
-
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -139,6 +86,14 @@ const isScheduled = post.data.status === 'scheduled';
 
     const formData = new FormData(form);
     const slug = form.dataset.slug;
+
+    // Convert heroImage textarea to an array
+    const heroImageValue = formData.get('heroImage');
+    formData.delete('heroImage'); // Remove original heroImage
+    const heroImageArray = heroImageValue.split('\n').filter(url => url.trim() !== '');
+    heroImageArray.forEach(url => {
+      formData.append('heroImage[]', url);
+    });
 
     try {
       const response = await fetch(`/api/update-post?slug=${slug}` , {
@@ -153,7 +108,13 @@ const isScheduled = post.data.status === 'scheduled';
         messageDiv.className = 'success';
         
         setTimeout(() => {
-          window.location.href = '/admin';
+          // Redirect to the new slug if it changed
+          const newSlug = formData.get('slug');
+          if (newSlug && newSlug !== slug) {
+            window.location.href = `/blog/${newSlug}`;
+          } else {
+            window.location.href = '/admin';
+          }
         }, 2000);
 
       } else {

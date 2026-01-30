@@ -3,61 +3,24 @@
 
 ## Overview
 
-This project is a personal blog and online portfolio for a student, designed to showcase their skills, projects, and thoughts. The website is built with Astro.js and features a clean, modern design that is both visually appealing and highly performant. The site is designed to be a central hub for the student's online presence, providing a place to share their work, connect with others, and document their journey.
+This document outlines the plan to add a site-wide newsletter signup box to the Astro project.
 
-## Implemented Features
+## Current Implementation Plan
 
-### Core
+### 1. Create the Newsletter Component
 
-- **Astro.js Framework**: The website is built on the Astro.js framework, which is known for its performance and content-focused approach.
-- **Tailwind CSS**: The styling is handled by Tailwind CSS, which provides a utility-first approach to design, resulting in a clean and consistent look and feel.
-- **File-based Routing**: The website uses Astro's file-based routing to create new pages and blog posts.
-- **Content Collections**: The blog posts are managed using Astro's Content Collections, which allows for a clean and organized way to manage content. There are currently four blog posts, each with its own markdown file in the `src/content/blog` directory.
+- A new Astro component will be created at `src/components/Newsletter.astro`.
+- This component will contain the HTML and CSS for the newsletter signup form, including fields for name, email, a consent checkbox, and a submit button.
+- The styling will be self-contained within the component.
 
-### Pages
+### 2. Create the API Endpoint
 
-- **Home Page**: The home page features a hero section with a brief introduction to the student, a summary of their skills, and a call to action to learn more about them.
-- **About Page**: The about page provides a more detailed overview of the student's background, skills, and experience.
-- **Admin Page**: The admin page provides a central hub for managing the blog, allowing the student to create, edit, and delete posts.
-- **Admin New Post Page**: A new page at `/admin/new` that provides a form to create new blog posts.
-- **Blog Post Pages**: Each blog post has its own dedicated page, which is dynamically generated from the markdown files in the `src/content/blog` directory.
+- A new API endpoint will be created at `src/pages/api/subscribe.js` to handle form submissions.
+- This endpoint will perform server-side validation and process the form data.
+- Initially, it will log submissions to the console.
 
-### Blog
+### 3. Integrate the Component
 
-- **Blog Post Creation**: The student can create new blog posts using a simple form on the `/admin/new` page.
-- **Blog Post Editing**: The student can edit existing blog posts using a similar form on the admin page.
-- **Blog Post Deletion**: The student can delete blog posts from the admin page.
-- **SEO-Friendly Slugs**: The blog posts have SEO-friendly slugs that are generated from the post title.
-
-### API
-
-- **`/api/posts`**: This API endpoint handles the creation of new blog posts by accepting form data and creating a new markdown file in the `src/content/blog` directory.
-- **`edit-post`**: This API endpoint handles the editing of existing blog posts.
-- **`delete-post`**: This API endpoint handles the deletion of blog posts.
-- **`/api/auth/login.astro`**: This API endpoint handles user login and session management.
-
-### Security
-
-- **Admin Login Page**: A dedicated login page at `/admin/login` to restrict access to the admin panel.
-- **Password Protection**: The login page uses a password stored in an environment variable (`ADMIN_PASSWORD`) for authentication.
-- **Secure Session Management**: Upon successful login, a secure, HTTP-only cookie is created to maintain the session.
-- **Middleware Protection**: A middleware file (`src/middleware.js`) intercepts all requests to `/admin` routes and redirects unauthorized users to the login page.
-- **Secure Firebase Integration**: Firebase API keys and other secrets have been moved from client-side JavaScript to a secure `.env` file to prevent exposure. Client-side code now safely accesses these variables through Astro's environment variable management.
-
-### Deployment
-
-- **Firebase App Hosting**: The website is deployed and hosted on Firebase App Hosting, a solution designed for modern, server-rendered web applications. This provides a fast, secure, and scalable environment for the site. The live site can be accessed at [https://studywithus-website-c2872.web.app](https://studywithus-website-c2872.web.app).
-
-## Current Task: HTTP 500 Error Resolution
-
-I have resolved a critical HTTP 500 error that was occurring on the deployed website.
-
-### Problem
-
-After a successful deployment, the website was returning an "HTTP ERROR 500," indicating a server-side error. This was happening because the application could not access the Firebase service account credentials in the production environment.
-
-### Solution
-
-I have updated the `src/firebase/server.ts` file to conditionally load the Firebase service account credentials. The updated code now checks if the application is running in the production environment (`import.meta.env.PROD`) and loads the credentials accordingly. This ensures that the application can connect to Firebase in both development and production, resolving the 500 error.
-
-I have updated the `blueprint.md` file to reflect this fix. The application is now in a stable, deployable state.
+- The `Newsletter` component will be added to the `src/layouts/BaseLayout.astro` file.
+- It will be placed immediately before the `Footer` component.
+- Conditional logic will be used to prevent the newsletter box from appearing on admin pages.

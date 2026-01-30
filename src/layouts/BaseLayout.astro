@@ -3,9 +3,12 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Newsletter from "../components/Newsletter.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { pathname } = Astro.url;
+const isAdminPage = pathname.startsWith('/admin');
 ---
 
 <!doctype html>
@@ -29,6 +32,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <main>
       <slot />
     </main>
+    {!isAdminPage && <Newsletter />}
     <Footer />
   </body>
 </html>

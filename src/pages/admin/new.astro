@@ -8,8 +8,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <label for="title">Title</label>
             <input type="text" id="title" name="title" required>
 
+            <label for="slug">Slug</label>
+            <input type="text" id="slug" name="slug" required>
+
             <label for="description">Description</label>
             <textarea id="description" name="description" required></textarea>
+
+            <label for="tableOfContents">Table of Contents</label>
+            <textarea id="tableOfContents" name="tableOfContents"></textarea>
 
             <label for="author">Author</label>
             <input type="text" id="author" name="author" required>
@@ -17,8 +23,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <label for="pubDate">Publication Date</label>
             <input type="date" id="pubDate" name="pubDate" required>
 
-            <label for="heroImage">Hero Image URL</label>
-            <input type="text" id="heroImage" name="heroImage">
+            <label for="heroImage">Hero Image URLs (one per line)</label>
+            <textarea id="heroImage" name="heroImage" rows="3"></textarea>
 
             <label for="content">Content (Markdown)</label>
             <textarea id="content" name="content" rows="10" required></textarea>
