@@ -32,12 +32,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     try {
       const firebaseConfig = {
-        apiKey: import.meta.env.public_firebase_api_key,
-        authDomain: import.meta.env.public_firebase_auth_domain,
-        projectId: import.meta.env.public_firebase_project_id,
-        storageBucket: import.meta.env.public_firebase_storage_bucket,
-        messagingSenderId: import.meta.env.public_fb_messaging_id, // <--- CORRECTED NAME
-        appId: import.meta.env.public_firebase_app_id,
+        apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
+        authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
+        projectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID,
+        storageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: import.meta.env.PUBLIC_FB_MESSAGING_ID,
+        appId: import.meta.env.PUBLIC_FIREBASE_APP_ID,
       };
 
       if (!firebaseConfig.apiKey || !firebaseConfig.messagingSenderId) {
