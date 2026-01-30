@@ -1,67 +1,33 @@
 ---
-import type { APIRoute } from "astro";
+import { app } from "../../../../firebase/server";
 import { getAuth } from "firebase-admin/auth";
-import { app } from "../../../firebase/server";
+import type { APIRoute } from "astro";
 
-export const POST: APIRoute = async ({ request, redirect, cookies }) => {
+export const POST: APIRoute = async ({ request, cookies }) => {
   const auth = getAuth(app);
 
-  console.log("Admin Login API called.");
-  console.log("Request URL:", request.url);
-  console.log("Request Headers:", Object.fromEntries(request.headers.entries()));
-
-  let rawRequestBody = '';
   try {
-    const clonedRequest = request.clone();
-    rawRequestBody = await clonedRequest.text();
-    console.log("Raw Request Body:", rawRequestBody);
-  } catch (e) {
-    console.error("Error reading raw request body:", e);
-  }
+    const { idToken } = await request.json();
+    if (!idToken) {
+      return new Response("ID token is missing", { status: 400 });
+    }
 
-  /* Get form data */
-  const formData = await request.formData();
-  const email = formData.get("email")?.toString();
-  const password = formData.get("password")?.toString();
+    const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
+    const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn });
 
-  console.log("Form Data - Email:", email);
-  console.log("Form Data - Password (first 3 chars):", password ? password.substring(0, 3) + '...' : 'N/A');
-
-  if (!email || !password) {
-    console.warn("Missing email or password in form data.");
-    return new Response("Email and password are required.", { status: 400 });
-  }
-
-  /* Authenticate user and get UID */
-  let uid: string;
-  try {
-    // In a real app, you would verify the password. This is NOT secure.
-    // We are only checking if the user exists and getting their UID.
-    const userRecord = await auth.getUserByEmail(email);
-    uid = userRecord.uid;
-    console.log("User authenticated successfully:", uid);
-  } catch (error) {
-    console.error("Error fetching user or invalid credentials:", error);
-    return new Response("Invalid credentials.", { status: 401 });
-  }
-
-  try {
-    /* Create and set session cookie */
-    const sessionCookie = await auth.createSessionCookie(uid, { expiresIn: 60 * 60 * 24 * 5 * 1000 });
     cookies.set("session", sessionCookie, {
       path: "/",
-      httpOnly: true, // Recommended for security
-      secure: import.meta.env.PROD, // Use secure cookies in production
-      maxAge: 60 * 60 * 24 * 5 // 5 days
+      httpOnly: true,
+      secure: true,
+      maxAge: expiresIn / 1000,
     });
-    console.log("Session cookie created and set.");
-  } catch (error) {
-    console.error("Error creating session cookie:", error);
-    return new Response("Failed to create session.", { status: 500 });
-  }
 
-  /* Redirect to admin dashboard */
-  console.log("Redirecting to /admin");
-  return redirect("/admin");
+    return new Response("Logged in successfully", { status: 200 });
+
+  } catch (error) {
+    console.error("Error in /api/auth/login:", error);
+    // This will catch errors if the request body is not valid JSON
+    return new Response("Invalid request body. Expected JSON.", { status: 400 });
+  }
 };
 ---
