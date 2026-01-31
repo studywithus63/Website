@@ -1,36 +1,32 @@
-# Astro.js Project Blueprint
+# Project Blueprint
 
 ## Overview
 
-This project is a static-first web application built with Astro.js. It's designed for the Firebase Studio environment and focuses on performance, SEO, and the seamless integration of UI frameworks. The goal is to create a fast, scalable site with minimal JavaScript by default, ensuring a great user experience and top-tier Core Web Vitals.
+This project is a static-first web application built with Astro.js and hosted on Firebase App Hosting. The focus is on creating a fast, performant, and scalable website with a great user experience.
 
-## Implemented Features
+## Style and Design
 
-### Initial Setup
+*   **Framework:** Astro.js
+*   **Styling:** Tailwind CSS (utility-first)
+*   **Fonts:** Atkinson Hyperlegible
+*   **Colors:** A vibrant and energetic palette.
+*   **Texture:** Subtle noise texture on the main background.
+*   **Visual Effects:** Multi-layered drop shadows for depth.
+*   **Iconography:** Modern and intuitive icons.
+*   **Interactivity:** "Glow" effect on interactive elements.
 
-- **Astro.js Project:** A basic Astro.js project has been created.
-- **File-Based Routing:** The project uses Astro's file-based routing in the `src/pages/` directory.
-- **Server-Side Rendering (SSR):** The project is configured for SSR with a Node.js adapter, enabling dynamic content and API routes.
-- **Content Collections:** Astro's content collections are set up for managing blog posts, drafts, and scheduled content.
-- **API Routes:** The project includes API routes for handling form submissions and other server-side logic.
+## Features
 
-### Styling
+*   **File-based routing:** Pages are created in the `src/pages/` directory.
+*   **Component-based architecture:** UI is built with a mix of `.astro` components (for static content) and UI framework components (for interactive "islands").
+*   **Server-side data fetching:** Data is fetched in the component's frontmatter.
+*   **Partial hydration:** `client:` directives are used to control when components become interactive.
+*   **Firebase Integration:**
+    *   **Hosting:** The application is deployed to Firebase App Hosting.
+    *   **Authentication:** Firebase Admin SDK is used for backend authentication.
+    *   **Firestore:** The application uses Firestore as its database.
 
-- **Tailwind CSS:** The project uses Tailwind CSS for utility-first styling.
+## Current Change: Fix Firebase Admin SDK Initialization
 
-### Deployment
-
-- **Firebase Integration:** The project is configured for deployment to Firebase.
-
-## Current Task: Fix Deployment Issues
-
-### Plan
-
-1.  **Diagnose the Build Failure:** The initial deployment failed. I will investigate the build logs to identify the root cause.
-2.  **Fix the Build Error:** The build failed due to a syntax error in an API route. I will fix the syntax error.
-3.  **Attempt Deployment Again:** After fixing the build, I will try deploying the application again.
-4.  **Resolve Image Path Issue:** The build failed again due to an image path issue. I will try to fix the image path.
-5.  **Use a Remote Image:** As a more robust solution, I will use a remote placeholder image to avoid any issues with local asset paths during the build process.
-6.  **Verify the Build:** I will run the build command locally to ensure all issues are resolved.
-7.  **Final Deployment:** Once the build is successful, I will attempt to deploy the application one last time.
-
+*   **Problem:** The Firebase Admin SDK was not being initialized correctly in the App Hosting environment, leading to authentication errors because of restrictions on service account key creation.
+*   **Solution:** The `firebase/server.ts` file was updated to use `credential.applicationDefault()`. This allows the SDK to automatically use the credentials provided by the App Hosting environment, resolving the authentication issue without requiring a manually created service account key.
