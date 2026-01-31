@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { getAuth } from "firebase-admin/auth";
-import { app } from "../../../../firebase/server";
+import { app } from "../../../firebase/server";
 
 export const POST: APIRoute = async ({ request, cookies }) => {
   const auth = getAuth(app);
@@ -14,8 +14,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
   try {
     /* Verify the ID token */
-    const decodedToken = await auth.verifyIdToken(idToken);
-    const { uid } = decodedToken;
+    await auth.verifyIdToken(idToken);
 
     /* Create a session cookie */
     const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn: 60 * 60 * 24 * 5 * 1000, });
