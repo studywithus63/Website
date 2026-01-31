@@ -90,20 +90,20 @@
         event.preventDefault();
 
         const formData = new FormData(form);
-        const email = formData.get('email');
+        const data = Object.fromEntries(formData.entries());
 
-        if (!email) {
-          alert('Please enter a valid email address.');
+        if (!data.email || !data.consent) {
+          alert('Please provide your email and consent.');
           return;
         }
 
         try {
-          const response = await fetch('/api/newsletter', {
+          const response = await fetch('/api/subscribe', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email: email.toString() }),
+            body: JSON.stringify(data),
           });
 
           if (response.ok) {
