@@ -1,14 +1,27 @@
-import { initializeApp, getApps, App, cert } from "firebase-admin/app";
 
-// Import the service account key
-import serviceAccount from "../../firebase-service-account.json";
+import { initializeApp, getApps, type App, cert } from "firebase-admin/app";
 
-// Check if the app is already initialized to avoid re-initializing
+const serviceAccount = {
+  type: "service_account",
+  project_id: process.env.FIREBASE_PROJECT_ID,
+  private_key_id: "", 
+  private_key: process.env.FIREBASE_PRIVATE_KEY
+    ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
+    : undefined,
+  client_email: process.env.FIREBASE_CLIENT_EMAIL,
+  client_id: "", 
+  auth_uri: "https://accounts.google.com/o/oauth2/auth",
+  token_uri: "https://oauth2.googleapis.com/token",
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+  client_x509_cert_url: `https://www.googleapis.com/robot/v1/metadata/x509/${process.env.FIREBASE_CLIENT_EMAIL}`,
+};
+
 const apps = getApps();
 
 const initializeAdminApp = (): App => {
-  // Initialize the app with the service account credentials
-  return initializeApp({ credential: cert(serviceAccount) });
+  return initializeApp({
+    credential: cert(serviceAccount as any),
+  });
 };
 
 export const app: App = apps.length ? apps[0]! : initializeAdminApp();

@@ -6,48 +6,35 @@ This project is a static-first web application built with Astro.js. It is design
 
 ## Implemented Features
 
-### Styling and Design
+### Initial Setup
 
-*   **CSS Framework:** Tailwind CSS
-*   **Fonts:** Atkinson Hyperlegible
-*   **Color Palette:**
-    *   Primary: `#1E40AF` (blue)
-    *   Secondary: `#DB2777` (pink)
-    *   Accent: `#FBBF24` (amber)
-    *   Neutral: `#111827` (gray)
-*   **Layout:** Responsive design with a consistent header, footer, and navigation.
-*   **Iconography:** Heroicons for UI elements.
-*   **Effects:** Subtle hover effects on links and buttons.
+*   Astro.js project initialized.
+*   Firebase integrated for backend services.
 
-### Core Functionality
+### User Authentication
 
-*   **File-based Routing:** Pages are located in the `src/pages` directory.
-*   **Static Site Generation:** All pages are pre-rendered to HTML at build time.
-*   **Component-based Architecture:** Reusable UI components are in `src/components`.
-*   **Layouts:** A base layout in `src/layouts` provides a consistent page structure.
-*   **Blog:** A blog with posts written in Markdown, located in `src/content/blog`.
-*   **Firebase Integration:** Firebase is used for authentication and database services.
+*   Firebase Authentication implemented for user login and registration.
 
-### Implemented Pages
+### Admin Role
 
-*   **Home:** `/` - Landing page with an introduction and featured blog posts.
-*   **About:** `/about` - A page describing the project and its mission.
-*   **Contact:** `/contact` - A page with contact information.
-*   **Disclaimer:** `/disclaimer` - A page with a disclaimer.
-*   **Our Mission:** `/our-mission` - A page describing the mission of the project.
-*   **Privacy:** `/privacy` - A page with a privacy policy.
-*   **Blog:** `/blog` - A page listing all blog posts.
-*   **Blog Post:** `/blog/[slug]` - A dynamic route to display individual blog posts.
+*   A user can be assigned an 'admin' role, granting them elevated privileges.
 
-## Current Task: Update Firebase Configuration
+## Recent Tasks
 
-### Plan
+### Task: Make User an Admin
 
-1.  **Update Firebase Client Configuration:** Replace the existing Firebase configuration in `src/scripts/firebase.js` with the new configuration provided by the user.
-2.  **Update Firebase Service Account:** Replace the existing Firebase service account configuration in `firebase-service-account.json` with the new configuration provided by the user.
+*   **Action:** Created a temporary Astro page (`src/pages/temp-admin.astro`) with server-side code to set a custom 'admin' claim for a specific user UID.
+*   **Outcome:** Successfully granted admin privileges by visiting the temporary page, which was then deleted.
 
-### Steps
+### Task: Fix Deployment Build Failure
 
-1.  Update the `firebaseConfig` object in `src/scripts/firebase.js` with the new values.
-2.  Update the `firebase-service-account.json` file with the new service account details.
-3.  Update the `blueprint.md` to reflect the changes.
+*   **Problem:** The deployment to Firebase App Hosting was failing during the build process.
+*   **Cause:** A new Firebase service account key was generated but not updated in the App Hosting environment.
+*   **Action:** Identified that environment variables (`FIREBASE_PROJECT_ID`, `FIREBASE_PRIVATE_KEY`, `FIREBASE_CLIENT_EMAIL`) in `src/firebase/server.ts` needed to be updated in the App Hosting settings, not locally.
+*   **Solution:** Guided the user to update the secret keys in their Firebase App Hosting configuration.
+
+### Task: Fix Runtime 404 Errors
+
+*   **Problem:** After a successful build, the deployed application was returning `404 Not Found` for all pages.
+*   **Cause:** The project was configured with `@astrojs/node` to output a server-rendered application, but it was missing a `Procfile`. This file is required by Firebase App Hosting to know the command to start the Node.js server.
+*   **Solution:** Created a `Procfile` in the project root with the content: `web: node ./dist/server/entry.mjs`.
