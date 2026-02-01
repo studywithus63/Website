@@ -1,30 +1,35 @@
 
-import { initializeApp, cert, getApps } from 'firebase-admin/app';
+import pkg from "firebase-admin";
 
-// Construct the service account object from environment variables
-const serviceAccount = {
-  type: "service_account",
-  project_id: import.meta.env.FIREBASE_PROJECT_ID,
-  private_key_id: "", // This can be left empty
-  private_key: import.meta.env.FIREBASE_PRIVATE_KEY?.replace(/\n/g, '\n'),
-  client_email: import.meta.env.FIREBASE_CLIENT_EMAIL,
-  client_id: "", // This can be left empty
-  auth_uri: "https://accounts.google.com/o/oauth2/auth",
-  token_uri: "https://oauth2.googleapis.com/token",
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url: `https://www.googleapis.com/robot/v1/metadata/x509/${import.meta.env.FIREBASE_CLIENT_EMAIL}`
-};
-
-// Get existing apps
-const apps = getApps();
-
-// Initialize the Firebase Admin app if it doesn't already exist
-// This prevents re-initialization errors during hot-reloads
-const app = apps.length 
-  ? apps[0] 
-  : initializeApp({
-      credential: cert(serviceAccount),
+try {
+  // Check if the variables are set in the App Hosting environment
+  if (process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_PRIVATE_KEY) {
+    console.log("[Firebase Admin] Initializing with environment variables.");
+    pkg.initializeApp({
+      credential: pkg.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        // The private key must be properly formatted with newlines
+        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\n/g, '\n'),
+      }),
     });
+  } else {
+    // Fallback for local development using service account file
+    console.log("[Firebase Admin] Initializing with service account file.");
+    // Make sure you have the serviceAccountKey.json file in your project root
+    const serviceAccount = await import("../../serviceAccountKey.json", {
+      assert: { type: "json" },
+    });
+    pkg.initializeApp({
+      credential: pkg.credential.cert(serviceAccount.default),
+    });
+  }
+} catch (error) {
+  if (!pkg.apps.length) {
+    console.error("[Firebase Admin] Initialization failed:", error);
+  } else {
+    console.log("[Firebase Admin] App already initialized.");
+  }
+}
 
-// Export the initialized app
-export { app };
+export const app = pkg.app();
