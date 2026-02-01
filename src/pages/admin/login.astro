@@ -22,18 +22,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </div>
 </BaseLayout>
 
-<script>
+<script is:inline>
   import { auth } from "../../firebase/client"; // Use the shared auth instance
   import { signInWithEmailAndPassword } from "firebase/auth";
 
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById("login-form") as HTMLFormElement;
-    const errorMessage = document.getElementById("error-message") as HTMLParagraphElement;
+    const form = document.getElementById("login-form") 
+    const errorMessage = document.getElementById("error-message") 
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-      const password = (form.elements.namedItem("password") as HTMLInputElement).value;
+      const email = form.elements.email.value;
+      const password = form.elements.password.value;
       errorMessage.textContent = "";
 
       try {
@@ -52,7 +52,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           const errorText = await response.text();
           errorMessage.textContent = `Login failed: ${errorText}`;
         }
-      } catch (error: any) {
+      } catch (error) {
         console.error("Firebase auth error:", error);
         errorMessage.textContent = error.message || "An unknown error occurred.";
       }
