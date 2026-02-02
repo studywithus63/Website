@@ -1,4 +1,4 @@
-// Forcing redeployment to apply secrets
+// Forcing final redeployment after setting IAM permissions.
 import { initializeApp, getApps, getApp, cert } from "firebase-admin/app";
 
 const getAdminApp = () => {
