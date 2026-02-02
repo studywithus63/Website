@@ -1,8 +1,9 @@
 
 import type { APIRoute } from "astro";
 import { getFirestore } from "firebase-admin/firestore";
-import { app } from "../../../firebase/server";
+import { getAdminApp } from "../../firebase/server";
 
+const app = getAdminApp();
 const db = getFirestore(app);
 
 // Helper function to create the markdown content
