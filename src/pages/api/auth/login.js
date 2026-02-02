@@ -1,9 +1,9 @@
 
 import { getAuth } from "firebase-admin/auth";
-import { app } from "../../../firebase/server";
+import { getAdminApp } from "../../../firebase/server";
 
 export const POST = async ({ request, cookies }) => {
-  const auth = getAuth(app);
+  const auth = getAuth(getAdminApp());
   console.log("[Login API] Received login request.");
 
   const { idToken } = await request.json();
@@ -24,9 +24,6 @@ export const POST = async ({ request, cookies }) => {
     const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn });
     console.log(`[Login API] Session cookie created successfully (first 30 chars): ${sessionCookie.substring(0, 30)}...`);
 
-    // ** THE FIX IS HERE **
-    // Hardcode `secure: true` as the site is always on HTTPS.
-    // Explicitly set `SameSite: 'Lax'` for modern browser compatibility.
     const cookieOptions = {
       path: "/",
       httpOnly: true,
@@ -43,7 +40,6 @@ export const POST = async ({ request, cookies }) => {
 
   } catch (error) {
     console.error("[Login API] CRITICAL: Error during authentication process:", error.code, error.message);
-    // Log the full error for better debugging on the server
     console.error(error);
     return new Response("Authentication failed due to a server error.", { status: 500 });
   }
