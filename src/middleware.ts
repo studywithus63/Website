@@ -28,7 +28,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   try {
     const app = getAdminApp();
     const auth = getAuth(app);
-    await auth.verifySessionCookie(sessionCookie.value, true);
+    await auth.verifySessionCookie(sessionCookie.value, false); // Disabled revocation check
 
     // The user is authenticated, proceed to the requested page.
     return next();
