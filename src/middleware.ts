@@ -1,11 +1,21 @@
+import { defineMiddleware } from 'astro/middleware';
 
-import { defineMiddleware } from "astro:middleware";
-import { getAuth } from "firebase-admin/auth";
-import { app } from "./firebase/server";
+export const onRequest = defineMiddleware(async (context, next) => {
 
-const auth = getAuth(app);
+  // --- DIAGNOSTIC STEP ---
+  // The authentication check is temporarily disabled to diagnose the login loop.
+  // This bypasses the logic in this file to confirm if client-side scripts
+  // are causing the redirect.
+  console.log(`[middleware.ts] DIAGNOSTIC MODE: Bypassing auth for URL: ${context.request.url}`)
 
-export const onRequest = defineMiddleware(async ({ cookies, redirect, url }, next) => {
+  /*
+  import { getAuth } from "firebase-admin/auth";
+  import { app } from "./firebase/server";
+
+  const auth = getAuth(app);
+
+  // This is the original logic that was causing issues.
+  // It is kept here for reference but is currently disabled.
   console.log(`[Middleware] Processing request for: ${url.pathname}`);
 
   if (url.pathname.startsWith("/admin")) {
@@ -50,7 +60,8 @@ export const onRequest = defineMiddleware(async ({ cookies, redirect, url }, nex
       return next();
     }
   }
+  */
 
-  console.log("[Middleware] Not an admin route, proceeding.");
+  console.log("[middleware.ts] Not an admin route (or auth is bypassed), proceeding.");
   return next();
 });
