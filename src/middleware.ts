@@ -22,7 +22,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
 
   try {
-    // Changed the second argument to `false` to disable the revocation check
     await auth.verifySessionCookie(sessionCookie.value, false);
     
     if (url.pathname === '/admin/login') {
@@ -32,9 +31,12 @@ export const onRequest = defineMiddleware(async (context, next) => {
     return next();
 
   } catch (error) {
+    // CRITICAL: Log the actual error to diagnose the issue
+    console.error("[Middleware Error] Failed to verify session cookie:", error);
+
     cookies.delete('session', { path: '/' });
     if (url.pathname !== '/admin/login') {
-      return redirect('/admin/login');
+      return redirect('/admin/login', 302);
     }
     return next();
   }
