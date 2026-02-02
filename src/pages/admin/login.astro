@@ -2,11 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Admin Portal v2">
+<BaseLayout title="Admin Login">
   <div class="login-container">
     <div class="login-card">
-      <h1>Admin Portal v2</h1>
-      <p>Deployment Test: If you see this, the code is updating.</p>
+      <h1>Admin Login</h1>
       <form id="login-form">
         <div class="form-group">
           <label for="email">Email</label>
@@ -24,17 +23,26 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script>
-  import { auth } from "../../firebase/client"; // Use the shared auth instance
+  import { auth } from "../../firebase/client";
   import { signInWithEmailAndPassword } from "firebase/auth";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById("login-form") 
-    const errorMessage = document.getElementById("error-message") 
+  const form = document.getElementById("login-form");
+  const errorMessage = document.getElementById("error-message");
 
+  if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = form.elements.email.value;
-      const password = form.elements.password.value;
+      
+      const emailElement = form.elements.namedItem("email");
+      const passwordElement = form.elements.namedItem("password");
+
+      if (!(emailElement instanceof HTMLInputElement) || !(passwordElement instanceof HTMLInputElement)) {
+        errorMessage.textContent = "Form is structured incorrectly.";
+        return;
+      }
+
+      const email = emailElement.value;
+      const password = passwordElement.value;
       errorMessage.textContent = "";
 
       try {
@@ -50,19 +58,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         if (response.ok) {
           window.location.href = "/admin";
         } else {
-          const errorText = await response.text();
-          errorMessage.textContent = `Login failed: ${errorText}`;
+          const errorData = await response.json();
+          errorMessage.textContent = errorData.error || "An unknown login error occurred.";
         }
       } catch (error) {
-        console.error("Firebase auth error:", error);
-        errorMessage.textContent = error.message || "An unknown error occurred.";
+        console.error("Firebase auth error:", error.code, error.message);
+        if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+          errorMessage.textContent = "Invalid email or password.";
+        } else {
+          errorMessage.textContent = "An error occurred during login.";
+        }
       }
     });
-  });
+  }
 </script>
 
 <style>
-  /* Styles remain the same */
   .login-container {
     display: flex;
     justify-content: center;
@@ -85,10 +96,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-weight: 600;
     color: #2d3748;
   }
-   p {
-    margin-bottom: 1rem;
-    color: #718096;
-  }
   .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -106,11 +113,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     border-radius: 4px;
     font-size: 1rem;
   }
-  input:focus {
-    outline: none;
-    border-color: #4299e1;
-    box-shadow: 0 0 0 1px #4299e1;
-  }
   .login-button {
     width: 100%;
     padding: 0.75rem;
@@ -121,9 +123,5 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  .login-button:hover {
-    background-color: #3182ce;
   }
 </style>
