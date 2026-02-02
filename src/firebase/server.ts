@@ -1,27 +1,38 @@
+import 'dotenv/config'; // Load environment variables from .env file
+import admin from 'firebase-admin';
+import { getApps } from 'firebase-admin/app';
 
-import { initializeApp, getApps, type App, cert } from "firebase-admin/app";
+function initializeFirebaseAdmin() {
+  // Check if the app is already initialized to prevent duplicates
+  if (getApps().length > 0) {
+    return admin.app();
+  }
 
-const serviceAccount = {
-  type: "service_account",
-  project_id: process.env.FIREBASE_PROJECT_ID,
-  private_key_id: "", 
-  private_key: process.env.FIREBASE_PRIVATE_KEY
-    ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
-    : undefined,
-  client_email: process.env.FIREBASE_CLIENT_EMAIL,
-  client_id: "", 
-  auth_uri: "https://accounts.google.com/o/oauth2/auth",
-  token_uri: "https://oauth2.googleapis.com/token",
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  client_x509_cert_url: `https://www.googleapis.com/robot/v1/metadata/x509/${process.env.FIREBASE_CLIENT_EMAIL}`,
-};
+  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
 
-const apps = getApps();
+  // Check for essential environment variables
+  if (!process.env.FIREBASE_PROJECT_ID || !process.env.FIREBASE_CLIENT_EMAIL || !privateKey) {
+    console.error("[Firebase Admin] CRITICAL: Missing Firebase environment variables.");
+    throw new Error("Server configuration error: Firebase Admin SDK environment variables are not set. Deployment cannot proceed.");
+  }
 
-const initializeAdminApp = (): App => {
-  return initializeApp({
-    credential: cert(serviceAccount as any),
-  });
-};
+  // Initialize the app with credentials
+  try {
+    const app = admin.initializeApp({
+      credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: privateKey,
+      }),
+    });
+    return app;
+  } catch (error) {
+    console.error("[Firebase Admin] Initialization failed!", error);
+    throw new Error(`Firebase Admin SDK initialization failed: ${error.message}`);
+  }
+}
 
-export const app: App = apps.length ? apps[0]! : initializeAdminApp();
+// Export a function that returns the initialized app singleton.
+export function getAdminApp() {
+  return initializeFirebaseAdmin();
+}

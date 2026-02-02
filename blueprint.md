@@ -21,14 +21,14 @@ This project is a static-first web application built with Astro.js. It is design
 
 ## Recent Tasks
 
-### Task: Fix Deployment Errors
+### Task: Fix Deployment & Initialization Errors
 
-1.  **Problem:** Initial deployment failed with `404 Not Found` errors.
-2.  **Cause:** The Astro Node.js adapter requires a `Procfile` to instruct App Hosting on how to start the server. This file was missing.
-3.  **Solution:** Created a `Procfile` in the project root.
+1.  **Deployment `404 Not Found`:** Resolved by adding a `Procfile` for the Node.js server.
+2.  **Server-Side Firebase Admin SDK Initialization Failure:** Resolved by guiding the user to set up the necessary Firebase secrets in Google Secret Manager.
+3.  **Client-Side Firebase Initialization Error:** The `is:inline` directive in an Astro component script was preventing the Firebase client module from bundling. Resolved by removing the directive and deleting a redundant, unconfigured `firebase.js` script.
+4.  **Server-Side "Default Firebase app does not exist" Error:** This was the most critical issue. The server was silently failing to initialize the Firebase Admin SDK at startup but would continue to run in a broken state, crashing only when a Firebase service was accessed. 
+    *   **Solution:** Implemented a new, robust on-demand initialization strategy in `src/firebase/server.ts`. This "fail-fast" method ensures the server only starts if Firebase credentials are correct, preventing it from running in an unstable state. The middleware (`src/middleware.ts`) was updated to use this new initialization function, and the old, faulty `src/firebase/server.js` file was deleted.
 
-4.  **Problem:** Second deployment failed because the server couldn't initialize Firebase Admin SDK.
-5.  **Cause:** The deployment was triggered before the necessary secrets (`FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`) were configured in the environment.
-6.  **Solution:** Guided the user to create these secrets in Google Secret Manager.
+## Next Steps
 
-7.  **Action:** Triggering a new deployment now that the secrets are in place.
+*   **Action:** Deploy the application to **Firebase App Hosting**. The previous attempt with `classic_firebase_hosting_deploy` failed because this is a server-rendered application, not a static site. The user will need to manually set up the deployment through the Firebase Console, connecting their GitHub repository to App Hosting.
