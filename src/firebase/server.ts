@@ -7,10 +7,11 @@ const getAdminApp = () => {
     return getApp();
   }
 
+  // Use process.env for server-side environment variables
   const serviceAccount = {
-    projectId: import.meta.env.FIREBASE_PROJECT_ID,
-    clientEmail: import.meta.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: import.meta.env.FIREBASE_PRIVATE_KEY?.replace(/\n/g, '\n'), // Ensure newlines are correctly formatted
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\n/g, '\n'), // Ensure newlines are correctly formatted
   };
 
   // Initialize the Firebase Admin SDK
