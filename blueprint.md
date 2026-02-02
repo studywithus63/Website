@@ -1,34 +1,54 @@
-# Project Blueprint
+# Blueprint: Astro.js Firebase Website
 
-## Overview
+## 1. Project Overview
 
-This project is a static-first web application built with Astro.js. It is designed to be developed within the Firebase Studio (formerly Project IDX) environment. The focus is on creating a fast, highly-performant, and scalable site that delivers minimal JavaScript by default, ensuring an exceptional user experience and top-tier Core Web Vitals.
+This project is a modern, content-focused website built with Astro.js and deployed on Firebase App Hosting. It features a blog, user authentication (login/logout), and a dynamic, visually appealing user interface. The primary goal is to create a high-performance, server-rendered application that delivers an exceptional user experience with minimal client-side JavaScript.
 
-## Implemented Features
+## 2. Implemented Features & Design
 
-### Initial Setup
+### Core Technology
+- **Framework:** Astro.js (Server-first, Islands Architecture)
+- **Deployment:** Firebase App Hosting (CI/CD with GitHub)
+- **Authentication:** Firebase Authentication (Email/Password & Social)
+- **Styling:** Inline CSS with a modern, clean aesthetic.
 
-*   Astro.js project initialized.
-*   Firebase integrated for backend services.
+### Pages & Functionality
+- **Home Page (`/`):**
+    - A welcoming hero section with a headline and description.
+    - A dynamic image carousel.
+    - Login and Logout buttons that appear conditionally based on user auth state.
+    - A section displaying the latest blog posts fetched from the project's content.
+- **Login Page (`/login`):**
+    - A simple, centered form for user login.
+    - Handles authentication via Firebase.
+- **Admin Page (`/admin`):**
+    - A protected route accessible only to logged-in users.
+    - Displays a welcome message to the authenticated user.
+- **Blog Posts (`/posts/*`):**
+    - Dynamically generated pages for each blog post.
+    - Clean, readable layout for blog content.
+- **API Endpoints:**
+    - `api/auth/login`: Handles the server-side logic for creating a session cookie upon successful login.
+    - `api/auth/logout`: Clears the session cookie to log the user out.
 
-### User Authentication
+### Design & Styling
+- **Layout:** Responsive and mobile-first design.
+- **Color Palette:** A clean and modern palette with a white background, dark text (`#121212`), and an accent color for interactive elements.
+- **Typography:** Clear and readable fonts with a strong hierarchy for headings and paragraphs.
+- **Components:**
+    - **Buttons:** Styled with a solid background color, rounded corners, and hover effects.
+    - **Post Cards:** Blog posts on the homepage are displayed in a grid layout with cards that have a subtle shadow and transform effect on hover.
+    - **Image Carousel:** A custom-built carousel with smooth fade transitions.
+- **Visual Effects:**
+    - Subtle box shadows on cards and images to create depth.
+    - Smooth transitions for hover states and the image carousel.
 
-*   Firebase Authentication implemented for user login and registration.
+## 3. Current Task: Finalizing and Documenting the Deployment
 
-### Admin Role
+**Objective:** The application was successfully built and deployed after fixing several critical issues related to server startup, Firebase SDK initialization, and environment variable configuration for production. The final step is to create this blueprint for future reference.
 
-*   A user can be assigned an 'admin' role, granting them elevated privileges.
-
-## Recent Tasks
-
-### Task: Fix Deployment & Initialization Errors
-
-1.  **Deployment `404 Not Found`:** Resolved by adding a `Procfile` for the Node.js server.
-2.  **Server-Side Firebase Admin SDK Initialization Failure:** Resolved by guiding the user to set up the necessary Firebase secrets in Google Secret Manager.
-3.  **Client-Side Firebase Initialization Error:** The `is:inline` directive in an Astro component script was preventing the Firebase client module from bundling. Resolved by removing the directive and deleting a redundant, unconfigured `firebase.js` script.
-4.  **Server-Side "Default Firebase app does not exist" Error:** This was the most critical issue. The server was silently failing to initialize the Firebase Admin SDK at startup but would continue to run in a broken state, crashing only when a Firebase service was accessed. 
-    *   **Solution:** Implemented a new, robust on-demand initialization strategy in `src/firebase/server.ts`. This "fail-fast" method ensures the server only starts if Firebase credentials are correct, preventing it from running in an unstable state. The middleware (`src/middleware.ts`) was updated to use this new initialization function, and the old, faulty `src/firebase/server.js` file was deleted.
-
-## Next Steps
-
-*   **Action:** Deploy the application to **Firebase App Hosting**. The previous attempt with `classic_firebase_hosting_deploy` failed because this is a server-rendered application, not a static site. The user will need to manually set up the deployment through the Firebase Console, connecting their GitHub repository to App Hosting.
+**Plan:**
+1.  **[COMPLETED]** **Create `blueprint.md`:** Generate this markdown file to serve as a comprehensive project guide.
+2.  **[COMPLETED]** **Document Project Overview:** Add a high-level summary of the project's purpose.
+3.  **[COMPLETED]** **Document Implemented Features:** Detail all existing styles, features, and design choices.
+4.  **[COMPLETED]** **Summarize Final Steps:** Conclude the interaction by confirming the successful deployment and explaining the purpose of this blueprint.
