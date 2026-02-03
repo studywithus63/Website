@@ -12,7 +12,6 @@ const posts = (await getCollection("blog")).sort(
   <div class="admin-container">
     <div class="admin-header">
       <h1>Admin Dashboard</h1>
-      <a href="/api/auth/logout" class="logout-button">Logout</a>
     </div>
     <a href="/admin/new" class="add-new-button">+ Add New Post</a>
     <ul class="post-list">
@@ -75,21 +74,6 @@ const posts = (await getCollection("blog")).sort(
   .admin-header h1 {
     font-size: 2rem;
     color: #1a202c;
-  }
-
-  .logout-button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #e53e3e;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-
-  .logout-button:hover {
-    background-color: #c53030;
   }
 
   .add-new-button {

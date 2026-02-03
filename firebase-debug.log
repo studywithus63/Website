@@ -444,3 +444,36 @@
 [debug] [2026-02-03T08:23:01.159Z] No OAuth tokens found
 [debug] [2026-02-03T08:23:01.159Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
 [debug] [2026-02-03T08:23:01.491Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 403
+[debug] [2026-02-03T08:57:56.778Z] Object "/apphosting" in "firebase.json" is missing required property: {"missingProperty":"ignore"}
+[debug] [2026-02-03T08:57:56.788Z] Field "/apphosting" in "firebase.json" is possibly invalid: must be array
+[debug] [2026-02-03T08:57:56.790Z] Field "/apphosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-03T08:57:56.807Z] Object "/apphosting" in "firebase.json" is missing required property: {"missingProperty":"ignore"}
+[debug] [2026-02-03T08:57:56.808Z] Field "/apphosting" in "firebase.json" is possibly invalid: must be array
+[debug] [2026-02-03T08:57:56.812Z] Field "/apphosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-03T08:57:56.816Z] Object "/apphosting" in "firebase.json" is missing required property: {"missingProperty":"ignore"}
+[debug] [2026-02-03T08:57:56.816Z] Field "/apphosting" in "firebase.json" is possibly invalid: must be array
+[debug] [2026-02-03T08:57:56.816Z] Field "/apphosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-03T08:57:56.821Z] Object "/apphosting" in "firebase.json" is missing required property: {"missingProperty":"ignore"}
+[debug] [2026-02-03T08:57:56.822Z] Field "/apphosting" in "firebase.json" is possibly invalid: must be array
+[debug] [2026-02-03T08:57:56.823Z] Field "/apphosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[error] Failed to fetch Firebase Project from Studio Workspace because WORKSPACE_SLUG environment variable is empty
+[debug] [2026-02-03T08:57:56.834Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-03T08:57:56.835Z] > authorizing via signed-in user (conactonswu@gmail.com)
+[debug] [2026-02-03T08:57:56.848Z] No OAuth tokens found
+[debug] [2026-02-03T08:57:56.848Z] No OAuth tokens found
+[debug] [2026-02-03T08:57:56.850Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-03T08:57:56.850Z] > authorizing via signed-in user (conactonswu@gmail.com)
+[debug] [2026-02-03T08:57:56.850Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-03T08:57:56.851Z] > authorizing via signed-in user (conactonswu@gmail.com)
+[debug] [2026-02-03T08:57:56.853Z] No OAuth tokens found
+[debug] [2026-02-03T08:57:56.853Z] No OAuth tokens found
+[debug] [2026-02-03T08:57:56.854Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/userinfo.email"]
+[debug] [2026-02-03T08:57:56.854Z] > authorizing via signed-in user (conactonswu@gmail.com)
+[debug] [2026-02-03T08:57:56.858Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-02-03T08:57:56.976Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo [none]
+[debug] [2026-02-03T08:57:57.317Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 403
+[debug] [2026-02-03T08:57:57.317Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2026-02-03T08:57:57.327Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/studywithus-website-c2872/billingInfo 403
