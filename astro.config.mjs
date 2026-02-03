@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://studywithuswebsite--studywithus-web-site-96b3a.asia-southeast1.hosted.app',
+  site: 'https://website--studywithus-95d52.asia-southeast1.hosted.app',
   integrations: [mdx(), sitemap()],
   output: 'server',
 
