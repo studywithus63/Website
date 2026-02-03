@@ -9,7 +9,7 @@ This project is a modern, content-focused website built with Astro.js and deploy
 ### Core Technology
 - **Framework:** Astro.js (Server-first, Islands Architecture)
 - **Deployment:** Firebase App Hosting (CI/CD with GitHub)
-- **Authentication:** Firebase Authentication (Email/Password & Social)
+- **Authentication:** Firebase Authentication (Email/Password & Session Cookies)
 - **Styling:** Inline CSS with a modern, clean aesthetic.
 
 ### Pages & Functionality
@@ -18,9 +18,9 @@ This project is a modern, content-focused website built with Astro.js and deploy
     - A dynamic image carousel.
     - Login and Logout buttons that appear conditionally based on user auth state.
     - A section displaying the latest blog posts fetched from the project's content.
-- **Login Page (`/login`):**
+- **Login Page (`/admin/login`):**
     - A simple, centered form for user login.
-    - Handles authentication via Firebase.
+    - Handles authentication via Firebase on the client and creates a session via a secure, server-side API endpoint.
 - **Admin Page (`/admin`):**
     - A protected route accessible only to logged-in users.
     - Displays a welcome message to the authenticated user.
@@ -43,12 +43,15 @@ This project is a modern, content-focused website built with Astro.js and deploy
     - Subtle box shadows on cards and images to create depth.
     - Smooth transitions for hover states and the image carousel.
 
-## 3. Current Task: Finalizing and Documenting the Deployment
+## 3. Bug Fixes & Resolutions
 
-**Objective:** The application was successfully built and deployed after fixing several critical issues related to server startup, Firebase SDK initialization, and environment variable configuration for production. The final step is to create this blueprint for future reference.
+### [RESOLVED] Critical Login Loop Issue
 
-**Plan:**
-1.  **[COMPLETED]** **Create `blueprint.md`:** Generate this markdown file to serve as a comprehensive project guide.
-2.  **[COMPLETED]** **Document Project Overview:** Add a high-level summary of the project's purpose.
-3.  **[COMPLETED]** **Document Implemented Features:** Detail all existing styles, features, and design choices.
-4.  **[COMPLETED]** **Summarize Final Steps:** Conclude the interaction by confirming the successful deployment and explaining the purpose of this blueprint.
+- **Symptom:** After a successful login, the user was continuously redirected back to the `/admin/login` page instead of accessing the `/admin` dashboard.
+- **Root Cause:** The client-side `<script>` in `src/pages/admin/login.astro` contained TypeScript syntax (`as HTMLInputElement`). Browsers do not understand TypeScript, causing the script to fail silently. Because the script failed, `event.preventDefault()` was never called on form submission. This resulted in the browser defaulting to its native form submission behavior, sending the user's credentials (email and password) as an insecure `GET` request in the URL. The server middleware was not designed to handle this `GET` request and, seeing no valid session cookie, correctly redirected the user back to the login page, creating an infinite loop.
+- **Resolution Steps:**
+    1.  **Initial Debugging:** Ruled out server-side cookie verification issues by simplifying the logic in `middleware.ts` and adding extensive logging.
+    2.  **Log Analysis:** The server logs revealed the insecure `GET` request containing login credentials in the URL, pointing to a client-side problem.
+    3.  **Code Correction:** The TypeScript syntax in the `login.astro` script was replaced with standard, browser-compatible JavaScript for accessing form element values (`form.email.value`). This ensured the `fetch` call using the `POST` method was correctly executed.
+    4.  **Authentication Fix:** Guided the user to create a GitHub Personal Access Token (PAT) and configure it in the remote URL to fix `git push` authentication failures.
+    5.  **Deployment:** The corrected code was successfully pushed to the `main` branch, triggering a new deployment that permanently resolved the login loop.

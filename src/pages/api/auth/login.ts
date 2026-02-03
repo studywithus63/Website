@@ -20,10 +20,10 @@ export const POST: APIRoute = async ({ request, cookies }) => {
 
     cookies.set("session", sessionCookie, {
       httpOnly: true,
-      secure: true, // Use true in production
+      secure: true,
       path: "/",
       maxAge: expiresIn,
-      sameSite: "strict",
+      sameSite: "lax",
     });
 
     return new Response(JSON.stringify({ success: true }), {

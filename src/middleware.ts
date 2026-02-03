@@ -25,10 +25,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   try {
     const app = getAdminApp();
     const auth = getAuth(app);
-    const decodedToken = await auth.verifySessionCookie(sessionCookie.value, false);
+    const decodedToken = await auth.verifySessionCookie(sessionCookie.value, true);
     console.log('[Middleware] Session cookie verified successfully for UID:', decodedToken.uid);
 
-    // Add user info to context for other pages to use
     context.locals.user = {
       uid: decodedToken.uid,
       email: decodedToken.email,
@@ -38,9 +37,16 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   } catch (error) {
     console.error('[Middleware] Error verifying session cookie:', error.code, error.message);
-    // Delete the invalid cookie
-    cookies.delete('session', { path: '/' });
-    console.log('[Middleware] Deleted invalid cookie. Redirecting to login.');
+    
+    cookies.set('session', '', {
+      path: '/',
+      expires: new Date(0),
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+    });
+    
+    console.log('[Middleware] Cleared invalid cookie. Redirecting to login.');
     return redirect('/admin/login');
   }
 });
