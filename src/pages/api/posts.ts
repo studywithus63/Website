@@ -1,10 +1,5 @@
 
 import type { APIRoute } from "astro";
-import { getFirestore } from "firebase-admin/firestore";
-import { getAdminApp } from "../../firebase/server";
-
-const app = getAdminApp();
-const db = getFirestore(app);
 
 // Helper function to create the markdown content
 const createMarkdownContent = (data: Record<string, any>) => {
@@ -92,13 +87,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     } catch (err) {
         console.error("Error writing file:", err);
         return new Response("Error writing file", { status: 500 });
-    }
-
-    try {
-        const postsCol = db.collection('posts');
-        await postsCol.doc(postData.slug).set(postData);
-    } catch (error) {
-        console.error("Error saving post to Firestore:", error);
     }
 
     return redirect(redirectURL);
