@@ -6,8 +6,7 @@ pubDate: 2026-02-03
 author: "Studywithus"
 status: "published"
 tableOfContents: "admin"
-heroImage:
-  - "https://postimg.cc/zHWsHLTQ   https://postimg.cc/zHWsHLTQ"
+heroImage: "https://postimg.cc/zHWsHLTQ"
 ---
 
 admin
